@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  movie_service:
+    container_name: movie-service
+    build:
+      context: .
+      target: production
+    ports:
+      - ${PORT}:${PORT}
+    env_file:
+      - .env
+    networks:
+      - movie_service_network
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+  mongodb:
+    image: mongo:5.0
+    container_name: movie-service-db
+    env_file:
+      - .env.docker
+    networks:
+      - movie_service_network
+    ports:
+      - 27017:27017
+    volumes:
+      - "mongodb-data:/data/db"
+    command: mongod
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongodb:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    restart: unless-stopped
+volumes:
+  mongodb-data:
+    name: mongodb-data
+networks:
+    movie_service_network:
+      driver: bridge
