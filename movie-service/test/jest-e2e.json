@@ -12,6 +12,8 @@
   },
   "moduleNameMapper": {
     "@app/utils/(.*)": "<rootDir>/../libs/utils/src/$1",
-    "@app/utils": "<rootDir>/../libs/utils/src"
+    "@app/utils": "<rootDir>/../libs/utils/src",
+    "@app/omdb/(.*)": "<rootDir>/../libs/omdb/src/$1",
+    "@app/omdb": "<rootDir>/../libs/omdb/src"
   }
 }

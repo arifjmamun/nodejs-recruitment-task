@@ -1,0 +1,1 @@
+export const BASIC_USER_MOVIE_ADD_LIMIT = 5;

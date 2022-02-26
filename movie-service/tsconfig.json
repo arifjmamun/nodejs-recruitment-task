@@ -19,15 +19,18 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "useUnknownInCatchVariables": false,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "moduleResolution": "node",
     "paths": {
       "@app/utils": [
         "libs/utils/src"
       ],
       "@app/utils/*": [
         "libs/utils/src/*"
+      ],
+      "@app/omdb": [
+        "libs/omdb/src"
+      ],
+      "@app/omdb/*": [
+        "libs/omdb/src/*"
       ]
     }
   }

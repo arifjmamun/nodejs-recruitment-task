@@ -4,7 +4,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { GlobalExceptionFilter, GlobalResponseTransformer } from '@app/utils';
 import { AppModule } from './app.module';
-import { appConfig } from './config/app.config';
+import { appConfig } from './common/config/app.config';
 import { setupSwagger } from './setupSwagger';
 
 const bootstrap = async () => {

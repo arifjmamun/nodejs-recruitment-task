@@ -1,6 +1,6 @@
 import { applyDecorators, ClassSerializerInterceptor, SerializeOptions, UseInterceptors } from '@nestjs/common';
 
-export const Serialize = applyDecorators(
+export const Serialize = () => applyDecorators(
 	UseInterceptors(ClassSerializerInterceptor),
 	SerializeOptions({
 		strategy: 'exposeAll',

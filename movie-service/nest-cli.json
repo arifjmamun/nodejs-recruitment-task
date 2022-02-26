@@ -10,6 +10,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/utils/tsconfig.lib.json"
       }
+    },
+    "omdb": {
+      "type": "library",
+      "root": "libs/omdb",
+      "entryFile": "index",
+      "sourceRoot": "libs/omdb/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/omdb/tsconfig.lib.json"
+      }
     }
   },
   "compilerOptions": {
