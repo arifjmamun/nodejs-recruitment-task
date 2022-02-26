@@ -1,5 +1,12 @@
 import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import {
+	ApiTags,
+	ApiBearerAuth,
+	ApiUnauthorizedResponse,
+	ApiForbiddenResponse,
+	ApiBadRequestResponse,
+	ApiNotFoundResponse,
+} from '@nestjs/swagger';
 
 import { ApiCreatedResponse, ApiOkResponse, Serialize, User } from '@app/utils';
 import { PaginationQueryDto } from '../../common';
@@ -14,15 +21,19 @@ import { AuthUser } from './../../auth/interfaces';
 @UseGuards(JwtAuthGuard)
 @Controller('movies')
 export class MoviesController {
-  constructor(private readonly moviesService: MoviesService) {}
+	constructor(private readonly moviesService: MoviesService) {}
 
+	@ApiUnauthorizedResponse({ description: 'Unauthorized response' })
+	@ApiForbiddenResponse({ description: 'Forbidden response' })
+	@ApiBadRequestResponse({ description: 'Bad Request response' })
+	@ApiNotFoundResponse({ description: 'Not found response' })
 	@ApiCreatedResponse({ type: MovieDto, description: 'Add new movie' })
 	@Post()
 	async addMovie(@Body() dto: CreateMovieDto, @User() user: AuthUser) {
 		return await this.moviesService.addMovie(dto, user);
 	}
 
-  @ApiOkResponse({ type: [MovieDto], description: 'Get all movies by pagination' })
+	@ApiOkResponse({ type: [MovieDto], description: 'Get all movies by pagination' })
 	@Get()
 	async getAll(@Query() query: PaginationQueryDto, @User() user: AuthUser) {
 		return this.moviesService.getMovies(query, user);

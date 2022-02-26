@@ -25,7 +25,6 @@ RUN npm install
 
 COPY --from=development /usr/src/app/dist ./dist
 COPY --from=development /usr/src/app/package.json .
-COPY --from=development /usr/src/app/.env.docker .
-COPY --from=development /usr/src/app/.env.docker ./.env
+COPY --from=development /usr/src/app/.env .
 
 CMD ["node", "dist/main"]
