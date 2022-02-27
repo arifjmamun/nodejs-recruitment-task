@@ -14,6 +14,8 @@
     "@app/utils/(.*)": "<rootDir>/../libs/utils/src/$1",
     "@app/utils": "<rootDir>/../libs/utils/src",
     "@app/omdb/(.*)": "<rootDir>/../libs/omdb/src/$1",
-    "@app/omdb": "<rootDir>/../libs/omdb/src"
+    "@app/omdb": "<rootDir>/../libs/omdb/src",
+    "@app/mongodb-memory-server/(.*)": "<rootDir>/../libs/mongodb-memory-server/src/$1",
+    "@app/mongodb-memory-server": "<rootDir>/../libs/mongodb-memory-server/src"
   }
 }
